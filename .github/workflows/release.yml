@@ -26,6 +26,7 @@ jobs:
         run: GOOS=${{matrix.job.os}} GOARCH=${{matrix.job.arch}} go build -o dist/devtool-${{matrix.job.os}}-${{matrix.job.arch}}${{matrix.job.exp}} -ldflags="-s -w"
       
   release:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -39,6 +40,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          tag_name: ${{ steps.tag_version.outputs.new_tag }}
           body: Release ${{ steps.tag_version.outputs.new_tag }}
           files: |
             dist/devtool-*
