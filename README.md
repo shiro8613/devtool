@@ -47,4 +47,25 @@ test:
 
 
 ## インストール方法
-　後で書きます
+　自分はmac/linuxぐらいでしか使わないのでmac/linuxのみ記述（windowsは頑張って♡）
+
+- mac:
+
+    ```bash
+    wget https://github.com/shiro8613/devtool/releases/download/v0.0.16/devtool-darwin-amd64 
+    mkdir -p ~/.devtool/bin
+    mv devtool-drawin-amd64 ~/.devtool/bin/devtool
+    chmod +x ~/.devtool/bin/devtool
+    echo 'export PAHT=$PATH:'+="$(pwd)/.devtool/bin" >> $(pwd)/.bashrc
+    source ~/.bashrc
+    ``` 
+- linux:
+
+    ```bash
+    wget https://github.com/shiro8613/devtool/releases/download/v0.0.16/devtool-linux-amd64 
+    mkdir -p ~/.devtool/bin
+    mv devtool-linux-amd64 ~/.devtool/bin/devtool
+    chmod +x ~/.devtool/bin/devtool
+    echo 'export PAHT=$PATH:'+="$(pwd)/.devtool/bin" >> $(pwd)/.bashrc
+    source ~/.bashrc
+    ``` 
