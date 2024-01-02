@@ -24,3 +24,11 @@ jobs:
         run: go get .
       - name: Build
         run: GOOS=${{matrix.job.os}} GOARCH=${{matrix.job.arch}} go build -o dist/devtool-${{matrix.job.os}}-${{matrix.job.arch}}${{matrix.job.exp}} -ldflags="-s -w"
+      
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: |
+            dist/devtool-${{matrix.job.os}}-${{matrix.job.arch}}${{matrix.job.exp}}
