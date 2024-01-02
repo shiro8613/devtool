@@ -34,6 +34,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - run: mkdir dist
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
         with:
