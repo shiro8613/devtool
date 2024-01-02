@@ -1,0 +1,26 @@
+name: release
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.19.x'
+      - name: Install dependencies
+        run: go get .
+      - name: Build Linux-amd64
+        run: GOOS=linux GOARCH=amd64 go build -o dist/devtool-linux-amd64 -ldflags="-s -w"
+      - name: Build Linux-arm
+        run: GOOS=linux GOARCH=arm go build -o dist/devtool-linux-arm64 -ldflags="-s -w"
+      - name: Build MacOS-intel
+        run: GOOS=drawin GOARCH=amd64 go build -o dist/devtool-mac-intel -ldflags="-s -w"
+      - name: Build MacOS-arm
+        run: GOOS=drawin GOARCH=arm64 go build -o dist/devtool-mac-arm -ldflags="-s -w"
+      - name: Build Windows-x64
+        run: GOOS=windows GOARCH=amd64 go build -o dist/devtool-windows-x64.exe -ldflags="-s -w"
+      
