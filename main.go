@@ -96,7 +96,7 @@ func WriteConfig() {
 			"test": ScriptType{
 				Type: "sync",
 				Command: map[string]string{
-					"echo_aaa": "echo",
+					"echo_aaa": "echo aaa",
 				},
 			},
 		}, 
