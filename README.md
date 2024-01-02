@@ -39,7 +39,7 @@ test:
 
 `command:`にはコマンドをマップで定義します。
 
-   `echo_aaa: "echo aaa"`の場合、`echo_aaa`の部分は実行結果表示の際に横に表示される名前です（例: `[echo_aaa] aaa`）　`echo aaa`は実行するコマンドです。
+- `echo_aaa: "echo aaa"`の場合、`echo_aaa`の部分は実行結果表示の際に横に表示される名前です（例: `[echo_aaa] aaa`）　`echo aaa`は実行するコマンドです。
 
 ### 2. async利用 （非同期実行で全部の処理を並行して実行します）
 
