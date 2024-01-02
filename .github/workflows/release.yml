@@ -4,7 +4,12 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          - {os: linux, arch: amd64, exp: 1}
+          - {os: linux, arch: arm64, exp: 2}
     steps:
       - uses: actions/checkout@v4
       - name: Setup Go
@@ -13,14 +18,5 @@ jobs:
           go-version: '1.19.x'
       - name: Install dependencies
         run: go get .
-      - name: Build Linux-amd64
-        run: GOOS=linux GOARCH=amd64 go build -o dist/devtool-linux-amd64 -ldflags="-s -w"
-      - name: Build Linux-arm
-        run: GOOS=linux GOARCH=arm go build -o dist/devtool-linux-arm64 -ldflags="-s -w"
-      - name: Build MacOS-intel
-        run: GOOS=darwin GOARCH=amd64 go build -o dist/devtool-mac-intel -ldflags="-s -w"
-      - name: Build MacOS-arm
-        run: GOOS=darwin GOARCH=arm64 go build -o dist/devtool-mac-arm -ldflags="-s -w"
-      - name: Build Windows-x64
-        run: GOOS=windows GOARCH=amd64 go build -o dist/devtool-windows-x64.exe -ldflags="-s -w"
-      
+      - name: Build
+        run: GOOS={matrix.job.os} GOARCH={matrix.job.arch} go build -o dist/devtool-{matrix.job.os}-{matrix.job.arch}{matrix.job.exp} -ldflags="-s -w"
