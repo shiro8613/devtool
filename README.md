@@ -54,7 +54,7 @@ test:
     ```bash
     wget https://github.com/shiro8613/devtool/releases/download/v0.0.16/devtool-darwin-amd64 
     mkdir -p ~/.devtool/bin
-    mv devtool-drawin-amd64 ~/.devtool/bin/devtool
+    mv devtool-darwin-amd64 ~/.devtool/bin/devtool
     chmod +x ~/.devtool/bin/devtool
     echo 'export PAHT=$PATH:'+="$(pwd)/.devtool/bin" >> $(pwd)/.bashrc
     source ~/.bashrc
