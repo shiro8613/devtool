@@ -50,4 +50,4 @@ jobs:
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           body: Release ${{ steps.tag_version.outputs.new_tag }}
-          artifacts: "devtool-*"
+          artifacts: "devtool-*/*"
