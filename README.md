@@ -56,8 +56,8 @@ test:
     mkdir -p ~/.devtool/bin
     mv devtool-darwin-amd64 ~/.devtool/bin/devtool
     chmod +x ~/.devtool/bin/devtool
-    echo 'export PAHT=$PATH:'+="$(pwd)/.devtool/bin" >> $(pwd)/.bashrc
-    source ~/.bashrc
+    echo 'export PATH=$PATH:'+="$(pwd)/.devtool/bin" >> $(pwd)/.zshrc
+    source ~/.zshrc
     ``` 
 - linux:
 
@@ -66,6 +66,6 @@ test:
     mkdir -p ~/.devtool/bin
     mv devtool-linux-amd64 ~/.devtool/bin/devtool
     chmod +x ~/.devtool/bin/devtool
-    echo 'export PAHT=$PATH:'+="$(pwd)/.devtool/bin" >> $(pwd)/.bashrc
+    echo 'export PATH=$PATH:'+="$(pwd)/.devtool/bin" >> $(pwd)/.bashrc
     source ~/.bashrc
     ``` 
