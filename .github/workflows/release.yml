@@ -24,6 +24,11 @@ jobs:
         run: go get .
       - name: Build
         run: GOOS=${{matrix.job.os}} GOARCH=${{matrix.job.arch}} go build -o dist/devtool-${{matrix.job.os}}-${{matrix.job.arch}}${{matrix.job.exp}} -ldflags="-s -w"
+      - name: upload
+        uses: actions/upload-artifact@master
+        with:
+          name: devtool-${{matrix.job.os}}-${{matrix.job.arch}}${{matrix.job.exp}}
+          path: dist/devtool-${{matrix.job.os}}-${{matrix.job.arch}}${{matrix.job.exp}}
       
   release:
     needs: build
