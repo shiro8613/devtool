@@ -8,8 +8,12 @@ jobs:
       fail-fast: false
       matrix:
         job:
-          - {os: linux, arch: amd64, exp: 1}
-          - {os: linux, arch: arm64, exp: 2}
+          - {os: 'linux', arch: 'amd64', exp: ''}
+          - {os: 'linux', arch: 'arm64', exp: ''}
+          - {os: 'darwin', arch: 'amd64', exp: ''}
+          - {os: 'darwin', arch: 'arm64', exp: ''}
+          - {os: 'windows', arch: 'amd64', exp: '.exe'}
+          - {os: 'windows', arch: 'arm64', exp: '.exe'}
     steps:
       - uses: actions/checkout@v4
       - name: Setup Go
@@ -19,4 +23,4 @@ jobs:
       - name: Install dependencies
         run: go get .
       - name: Build
-        run: GOOS={matrix.job.os} GOARCH={matrix.job.arch} go build -o dist/devtool-{matrix.job.os}-{matrix.job.arch}{matrix.job.exp} -ldflags="-s -w"
+        run: GOOS=${{matrix.job.os}} GOARCH=${{matrix.job.arch}} go build -o dist/devtool-${{matrix.job.os}}-${{matrix.job.arch}}${{matrix.job.exp}} -ldflags="-s -w"
