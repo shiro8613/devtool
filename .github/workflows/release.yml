@@ -38,13 +38,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: dist
+          patter: devtool-*
       - uses: actions/checkout@v2
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: ls dist
+      - run: ls -R dist
       - name: Release
         uses: ncipollo/release-action@v1
         with:
