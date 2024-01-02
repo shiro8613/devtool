@@ -18,9 +18,9 @@ jobs:
       - name: Build Linux-arm
         run: GOOS=linux GOARCH=arm go build -o dist/devtool-linux-arm64 -ldflags="-s -w"
       - name: Build MacOS-intel
-        run: GOOS=drawin GOARCH=amd64 go build -o dist/devtool-mac-intel -ldflags="-s -w"
+        run: GOOS=darwin GOARCH=amd64 go build -o dist/devtool-mac-intel -ldflags="-s -w"
       - name: Build MacOS-arm
-        run: GOOS=drawin GOARCH=arm64 go build -o dist/devtool-mac-arm -ldflags="-s -w"
+        run: GOOS=darwin GOARCH=arm64 go build -o dist/devtool-mac-arm -ldflags="-s -w"
       - name: Build Windows-x64
         run: GOOS=windows GOARCH=amd64 go build -o dist/devtool-windows-x64.exe -ldflags="-s -w"
       
