@@ -38,7 +38,7 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
         with:
-          path: dist
+          name: devtool-*
       - run: ls
       - name: Bump version and push tag
         id: tag_version
